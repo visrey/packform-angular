@@ -1,0 +1,28 @@
+<div class="mainContainer">
+    <!-- <form> -->
+        <div class="searchContainer">
+            <mat-form-field class="example-full-width">
+                <mat-label>Search</mat-label>
+                <input matInput [(ngModel)]="searchTxt">
+              </mat-form-field>
+              {{searchTxt}}
+        </div>
+        <div class="dateContainer">
+            <mat-form-field appearance="fill">
+                <mat-label>Created date</mat-label>
+                <mat-date-range-input [rangePicker]="dateRange">
+                  <input matStartDate placeholder="Start date" [(ngModel)]="startDate">
+                  <input matEndDate placeholder="End date" [(ngModel)]="endDate">
+                </mat-date-range-input>
+                <mat-datepicker-toggle matSuffix [for]="dateRange"></mat-datepicker-toggle>
+                <mat-date-range-picker #dateRange></mat-date-range-picker>
+              </mat-form-field>              
+        </div>
+    <!-- </form> -->
+    <div class="totalContainer">
+        Total Amount: <strong>{{ totalAmount | currency }}</strong>
+    </div>
+    <div class="tableContainer">
+        <app-datatable [searchQuery]="searchTxt" [startDate]="startDate" [endDate]="endDate"></app-datatable>
+    </div>
+</div>
